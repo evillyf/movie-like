@@ -20,7 +20,7 @@ const HomeScreen = () => {
                 <Text style={styles.headerTitle}> EM CARTAZ</Text>
                 <Text style={styles.headerSubTitle}> VER TODOS</Text>
             </View>
-            <View> 
+            <View style={styles.genrelistContainer}> 
                 <FlatList data= {Genres} 
                 horizontal 
                 showsHorizontalScrollIndicator={false}
@@ -58,6 +58,9 @@ const styles = StyleSheet.create({
         fontSize: 13,
         color: COLORS.ACTIVE,
 
+    },
+    genrelistContainer: {
+        paddingVertical: 10,
     }
 
 });
