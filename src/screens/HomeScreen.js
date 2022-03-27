@@ -2,7 +2,11 @@ import { StatusBar} from "expo-status-bar";
 import React from "react";
 import { StyleSheet, Text, View, ScrollView} from "react-native";
 import { FlatList } from "react-native-gesture-handler";
-import Colors from "../constants/Colors";
+import COLORS from "../constants/Colors";
+import GenreCard from "../components/GenreCard";
+import ItemSeparator from "../components/ItemSeparator";
+
+
 
 /* definindo a lista de gêneros dos filmes */
 const Genres = ["Todos", "Ação", "Comédia", "Romance", "Horror", "Sci-Fi"]
@@ -11,15 +15,21 @@ const Genres = ["Todos", "Ação", "Comédia", "Romance", "Horror", "Sci-Fi"]
 const HomeScreen = () => {
     return (
         <ScrollView contentContainerStyle={styles.container}>    
-            <StatusBar style="auto" translucent={false} backgroundColor={Colors.BASIC_BACKGROUND}/> 
+            <StatusBar style="auto" translucent={false} backgroundColor={COLORS.BASIC_BACKGROUND}/> 
             <View style={styles.headerContainer}>
                 <Text style={styles.headerTitle}> EM CARTAZ</Text>
                 <Text style={styles.headerSubTitle}> VER TODOS</Text>
             </View>
             <View> 
-                <FlatList data= {Genres} horizontal keyExtractor={item => item} renderItem={({item, index}) => {
-                    return <View></View>
-                }}/>
+                <FlatList data= {Genres} 
+                horizontal 
+                showsHorizontalScrollIndicator={false}
+                keyExtractor={item => item} 
+                ItemSeparatorComponent={() => <ItemSeparator width={20}/>}
+                ListHeaderComponent={() => <ItemSeparator width={20}/>}
+                ListFooterComponent={() => <ItemSeparator width={20}/>}
+                renderItem={({item}) => <GenreCard />}
+                />
             </View>
         </ScrollView>
         
@@ -30,7 +40,7 @@ const HomeScreen = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: Colors.EXTRA_LIGHT_GRAY,  /* definindo a cor de fundo */
+        backgroundColor: COLORS.EXTRA_LIGHT_GRAY,  /* definindo a cor de fundo */
     },
     headerContainer: {
         flexDirection: "row",
@@ -46,7 +56,7 @@ const styles = StyleSheet.create({
     },
     headerSubTitle: {
         fontSize: 13,
-        color: Colors.ACTIVE,
+        color: COLORS.ACTIVE,
 
     }
 
