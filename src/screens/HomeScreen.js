@@ -1,15 +1,16 @@
 import { StatusBar} from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, ScrollView} from "react-native";
 
 
 
 const HomeScreen = () => {
     return (
-        <View style={StyleSheet.container}>
-            <StatusBar style="auto" />
+        <ScrollView style={StyleSheet.container}>    
+            <StatusBar style="auto" translucent={false}/>
             <Text>Home Screen</Text>
-        </View>
+        </ScrollView>
+        
     );
 };
 
