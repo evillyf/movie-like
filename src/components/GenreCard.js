@@ -1,5 +1,5 @@
 import React from "react";
-import {View, Text, StyleSheet, Dimensions } from "react-native";
+import { TouchableOpacity, View, Text, StyleSheet, Dimensions } from "react-native";
 import COLORS from "../constants/Colors";
 
 
@@ -9,11 +9,11 @@ const { width } = Dimensions.get("screen");
 const setWidth = (w) => (width / 100) *w;
 
 /* menu de navegação dos filmes */
-const GenreCard = () => {
+const GenreCard = ({genreName}) => {
     return (
-        <View style={styles.container}>
-            <Text>Ação</Text>
-        </View>
+        <TouchableOpacity style={styles.container} activeOpacity={0.5}>
+            <Text style={styles.genreText}>{genreName}</Text>
+        </TouchableOpacity>
     );
 };
 
@@ -31,6 +31,10 @@ const styles = StyleSheet.create({
         marginVertical: 2,
         width: setWidth(20),
     },
+    genreText: {
+        fontSize: 13,
+        color: COLORS.ACTIVE,
+    }
 });
 
 export default GenreCard;

@@ -28,7 +28,7 @@ const HomeScreen = () => {
                 ItemSeparatorComponent={() => <ItemSeparator width={20}/>}
                 ListHeaderComponent={() => <ItemSeparator width={20}/>}
                 ListFooterComponent={() => <ItemSeparator width={20}/>}
-                renderItem={({item}) => <GenreCard />}
+                renderItem={({item}) => <GenreCard genreName={item}/>}
                 />
             </View>
         </ScrollView>
