@@ -71,6 +71,7 @@ const styles = StyleSheet.create({
 
     headerTitle: {
         fontSize: 28,
+        fontFamily: "Bold",
 
     },
     headerSubTitle: {
