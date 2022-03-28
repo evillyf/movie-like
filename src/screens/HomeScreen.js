@@ -77,6 +77,7 @@ const styles = StyleSheet.create({
     headerSubTitle: {
         fontSize: 13,
         color: COLORS.ACTIVE,
+        fontFamily: "Bold",
 
     },
     genrelistContainer: {
