@@ -3,6 +3,7 @@ import React, {useState} from "react";
 import { StyleSheet, Text, View, ScrollView} from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 import COLORS from "../constants/Colors";
+import FONTS from "../constants/Fonts";
 import GenreCard from "../components/GenreCard";
 import ItemSeparator from "../components/ItemSeparator";
 
@@ -71,7 +72,7 @@ const styles = StyleSheet.create({
 
     headerTitle: {
         fontSize: 28,
-        fontFamily: "Bold",
+        fontFamily: FONTS.BOLD,
 
     },
     headerSubTitle: {
