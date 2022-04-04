@@ -5,6 +5,7 @@ import { FlatList } from "react-native-gesture-handler";
 import COLORS from "../constants/Colors";
 import FONTS from "../constants/Fonts";
 import GenreCard from "../components/GenreCard";
+import MovieCard from "../components/MovieCard";
 import ItemSeparator from "../components/ItemSeparator";
 
 
@@ -40,10 +41,20 @@ const HomeScreen = () => {
                             onPress={setActiveGenre}
                         />
                     )}
-                />
-                
-                
+                />   
             </View>
+            <View>
+                <FlatList
+                    data={Genres}
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                    keyExtractor={(item) => item}
+                    ItemSeparatorComponent={() => <ItemSeparator width={20} />}
+                    ListHeaderComponent={() => <ItemSeparator width={20} />}
+                    ListFooterComponent={() => <ItemSeparator width={20} />}
+                    renderItem={({ item }) => <MovieCard />}
+                />
+            </View>            
         </ScrollView>
         
     );

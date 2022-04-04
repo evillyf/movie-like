@@ -13,7 +13,7 @@ const MovieCard = () => {
 
 const styles = StyleSheet.create({
     constainer: {
-        backggroundColor: COLORS.ACTIVE,
+        backgroundColor: COLORS.ACTIVE,
     },
 });
 
