@@ -57,7 +57,12 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
     },
 
-    movieSubTitle:{},
+    movieSubTitle:{
+        fontSize: 12,
+        fontFamily: Fonts.REGULAR,
+    },
+
+
     rowAndCenter:{
         flexDirection: "row",
         alignItems: "center"
