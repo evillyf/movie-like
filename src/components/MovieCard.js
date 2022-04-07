@@ -4,15 +4,15 @@ import COLORS from "../constants/Colors";
 
 const MovieCard = () => {
     return (
-        <View style={StyleSheet.container}>
+        <View style={styles.container}>
             <Text>Filme</Text>
         </View>
 
     );
-}
+};
 
 const styles = StyleSheet.create({
-    constainer: {
+    container: {
         backgroundColor: COLORS.ACTIVE,
     },
 });

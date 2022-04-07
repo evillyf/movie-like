@@ -1,7 +1,6 @@
 import { StatusBar} from "expo-status-bar";
 import React, {useState} from "react";
-import { StyleSheet, Text, View, ScrollView} from "react-native";
-import { FlatList } from "react-native-gesture-handler";
+import { StyleSheet, Text, View, ScrollView, FlatList} from "react-native";
 import COLORS from "../constants/Colors";
 import FONTS from "../constants/Fonts";
 import GenreCard from "../components/GenreCard";
@@ -11,7 +10,7 @@ import ItemSeparator from "../components/ItemSeparator";
 
 
 /* definindo a lista de gêneros dos filmes */
-const Genres = ["Todos", "Ação", "Comédia", "Romance", "Horror", "Sci-Fi"]
+const Genres = ["Todos", "Ação", "Comédia", "Romance", "Horror", "Sci-Fi"];
 
 /* definindo a barra de notificação - cores no arquivo Colors. styles pode ser dark, light ect */
 const HomeScreen = () => {
@@ -22,8 +21,8 @@ const HomeScreen = () => {
         <ScrollView contentContainerStyle={styles.container}>    
             <StatusBar style="auto" translucent={false} backgroundColor={COLORS.BASIC_BACKGROUND}/> 
             <View style={styles.headerContainer}>
-                <Text style={styles.headerTitle}> EM CARTAZ</Text>
-                <Text style={styles.headerSubTitle}> VER TODOS</Text>
+                <Text style={styles.headerTitle}>EM CARTAZ</Text>
+                <Text style={styles.headerSubTitle}>VER TODOS</Text>
             </View>
             <View style={styles.genrelistContainer}> 
                 <FlatList 
@@ -53,8 +52,10 @@ const HomeScreen = () => {
                     ListHeaderComponent={() => <ItemSeparator width={20} />}
                     ListFooterComponent={() => <ItemSeparator width={20} />}
                     renderItem={({ item }) => <MovieCard />}
+                                       
+                
                 />
-            </View>            
+            </View>          
         </ScrollView>
         
     );
