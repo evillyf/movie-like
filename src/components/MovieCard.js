@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import COLORS from "../constants/Colors";
+import Fonts from "../constants/Fonts";
 import { AntDesign } from '@expo/vector-icons';
 
 /* https://icons.expo.fyi/AntDesign/heart  - para pegar o import e render de ícones */
@@ -12,11 +13,17 @@ const MovieCard = () => {
                 <Text>Filme</Text>
             </View>
             <View>
-                <Text>O Batman</Text>
+                <Text style={styles.movieTitle}>O Batman</Text>
                 <View style={styles.movieSubTitleContainer}>
-                    <Text>Português | (BR)</Text>
+                    <Text style={styles.movieSubTitle}>Português | (BR)</Text>
                     <View style={styles.rowAndCenter}>
-                        <AntDesign name="heart" size={24} color="red" />
+                        <AntDesign 
+                        name="heart" 
+                        size={17} 
+                        color={COLORS.HEART}
+                        style={{ marginRight: 5}}
+                        
+                        />
                         <Text>90%</Text>
                     </View>
                 </View>
@@ -35,10 +42,19 @@ const styles = StyleSheet.create({
         elevation: 5,
         marginVertical: 2,
     },
-    movieTitle:{},
+    movieTitle:{
+        fontFamily: Fonts.EXTRA_BOLD,
+        color: COLORS.GRAY,
+        paddingVertical: 2,
+        marginTop: 5,
+    },
+
+
+
     movieSubTitleContainer:{
         flexDirection: "row",
-        alignItems: "center"
+        alignItems: "center",
+        justifyContent: "space-between",
     },
 
     movieSubTitle:{},
