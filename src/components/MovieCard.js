@@ -13,7 +13,7 @@ const MovieCard = () => {
                 <Text>Filme</Text>
             </View>
             <View>
-                <Text style={styles.movieTitle}>O Batman</Text>
+                <Text style={styles.movieTitle} numberOfLines={3}>Homem-Aranha: De volta ao lar</Text>
                 <View style={styles.movieSubTitleContainer}>
                     <Text style={styles.movieSubTitle}>Português | (BR)</Text>
                     <View style={styles.rowAndCenter}>
@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
         color: COLORS.GRAY,
         paddingVertical: 2,
         marginTop: 5,
+        width: 230,
     },
 
 
