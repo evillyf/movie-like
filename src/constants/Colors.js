@@ -1,6 +1,7 @@
 export default {
     BASIC_BACKGROUND: "#F5F7FA",
-    ACTIVE: "#057DFE",
+    ACTIVE: "#D4AF37",
+    ACTIVE_AZUL: "#057DFE",
     HEART: "#F13939",
     WHITE: "#FFFFFF",
     YELLOW: "#FFC107",
@@ -8,4 +9,5 @@ export default {
     GRAY: "#7C7C7C",
     LIGHT_GRAY: "#969696",
     EXTRA_LIGHT_GRAY: "#E5E5E5",
+    PERSIAN: "#B12025",
   };

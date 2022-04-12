@@ -1,6 +1,6 @@
 import { StatusBar} from "expo-status-bar";
 import React, {useState} from "react";
-import { StyleSheet, Text, View, ScrollView, FlatList} from "react-native";
+import { StyleSheet, Text, View, ScrollView, FlatList, Image} from "react-native";
 import COLORS from "../constants/Colors";
 import FONTS from "../constants/Fonts";
 import GenreCard from "../components/GenreCard";
@@ -19,11 +19,17 @@ const HomeScreen = () => {
 
     return (
         <ScrollView contentContainerStyle={styles.container}>    
-            <StatusBar style="auto" translucent={false} backgroundColor={COLORS.BASIC_BACKGROUND}/> 
-            <View style={styles.headerContainer}>
+            <StatusBar style="auto" translucent={false} backgroundColor={COLORS.ACTIVE}/>   
+
+            
+            <View style={styles.headerContainer}> 
                 <Text style={styles.headerTitle}>EM CARTAZ</Text>
-                <Text style={styles.headerSubTitle}>VER TODOS</Text>
+                <Image
+                style={styles.image}
+                source={require('./logo.png')}
+            />
             </View>
+
             <View style={styles.genrelistContainer}> 
                 <FlatList 
                     data= {Genres} 
@@ -57,10 +63,12 @@ const HomeScreen = () => {
                 />
             </View>          
         </ScrollView>
+                
+
+                
         
     );
 };
-
 
 
 
@@ -85,17 +93,25 @@ const styles = StyleSheet.create({
     headerTitle: {
         fontSize: 28,
         fontFamily: FONTS.BOLD,
+        color: COLORS.BLACK,
 
     },
     headerSubTitle: {
-        fontSize: 13,
-        color: COLORS.ACTIVE,
-        fontFamily: "Bold",
+        width:100,
+        height: 100,
 
     },
     genrelistContainer: {
         paddingVertical: 10,
+        
+    },
+    image: {
+        width:50, 
+        height: 50,
+
     }
+
+
 
 });
 
