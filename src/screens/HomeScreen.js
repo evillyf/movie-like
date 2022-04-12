@@ -94,6 +94,9 @@ const styles = StyleSheet.create({
         fontSize: 28,
         fontFamily: FONTS.BOLD,
         color: COLORS.BLACK,
+        textShadowColor: COLORS.BLACK,
+        textShadowOffset: {width: -1, height: -1},
+        textShadowRadius: 2,
 
     },
     headerSubTitle: {
