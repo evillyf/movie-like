@@ -10,4 +10,5 @@ export default {
     LIGHT_GRAY: "#969696",
     EXTRA_LIGHT_GRAY: "#E5E5E5",
     PERSIAN: "#B12025",
+    DARK_GRAY: "#2A2A2A",
   };

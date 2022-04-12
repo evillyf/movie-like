@@ -10,16 +10,16 @@ import ItemSeparator from "../components/ItemSeparator";
 
 
 /* definindo a lista de gêneros dos filmes */
-const Genres = ["Todos", "Ação", "Comédia", "Romance", "Horror", "Sci-Fi"];
+const Genres = ["Todos", "Ação", "Comédia", "Romance", "Terror", "Sci-Fi"];
 
-/* definindo a barra de notificação - cores no arquivo Colors. styles pode ser dark, light ect */
+/* definindo a barra de notificação - cores no arquivo Colors. styles pode ser dark, light, auto ou escolher uma cor */
 const HomeScreen = () => {
     const [activeGenre, setActiveGenre] = useState("Todos");
 
 
     return (
         <ScrollView contentContainerStyle={styles.container}>    
-            <StatusBar style="auto" translucent={false} backgroundColor={COLORS.ACTIVE}/>   
+            <StatusBar style="light" translucent={false} backgroundColor={COLORS.ACTIVE}/>   
 
             
             <View style={styles.headerContainer}> 
@@ -80,7 +80,7 @@ const HomeScreen = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: COLORS.EXTRA_LIGHT_GRAY,  /* definindo a cor de fundo */
+        backgroundColor: COLORS.EXTRA_LIGHT_GRAY,  /* definindo a cor de fundo. COLORS.EXTRA_LIGHT_GRAY ou WHITE ou COLORS.DARK_GRAY*/
     },
     headerContainer: {
         flexDirection: "row",

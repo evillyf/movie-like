@@ -35,7 +35,7 @@ const MovieCard = () => {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: COLORS.ACTIVE,
+        backgroundColor: COLORS.GRAY,
         height: 340,
         width: 230,
         borderRadius: 12,
@@ -61,6 +61,7 @@ const styles = StyleSheet.create({
     movieSubTitle:{
         fontSize: 12,
         fontFamily: Fonts.REGULAR,
+        color: COLORS.BLACK,
     },
 
 
