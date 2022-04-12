@@ -19,7 +19,7 @@ const HomeScreen = () => {
 
     return (
         <ScrollView contentContainerStyle={styles.container}>    
-            <StatusBar style="auto" translucent={false} backgroundColor={COLORS.BASIC_BACKGROUND}/>   
+            <StatusBar style="auto" translucent={false} backgroundColor={COLORS.ACTIVE}/>   
 
             
             <View style={styles.headerContainer}> 
