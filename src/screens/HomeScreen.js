@@ -19,14 +19,14 @@ const HomeScreen = () => {
 
     return (
         <ScrollView contentContainerStyle={styles.container}>    
-            <StatusBar style="light" translucent={false} backgroundColor={COLORS.ACTIVE}/>   
+            <StatusBar style="auto" translucent={false} backgroundColor={COLORS.BASIC_BACKGROUND}/>   
 
             
             <View style={styles.headerContainer}> 
                 <Text style={styles.headerTitle}>EM CARTAZ</Text>
                 <Image
                 style={styles.image}
-                source={require('./logo.png')}
+                source={require('./logo_gray.png')}
             />
             </View>
 
@@ -106,8 +106,8 @@ const styles = StyleSheet.create({
         
     },
     image: {
-        width:50, 
-        height: 50,
+        width:60, 
+        height: 60,
 
     }
 
