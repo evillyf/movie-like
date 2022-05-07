@@ -66,9 +66,15 @@ const HomeScreen = () => {
                     ItemSeparatorComponent={() => <ItemSeparator width={20} />}
                     ListHeaderComponent={() => <ItemSeparator width={20} />}
                     ListFooterComponent={() => <ItemSeparator width={20} />}
-                    renderItem={({ item }) => <MovieCard />}
-                                       
-                
+                    renderItem={({ item }) => (
+                        <MovieCard 
+                            title={item.title} 
+                            language={item.original_language} 
+                            voteAvarage={item.vote_avarage}
+                            voteCount={item.vote_count}
+                            poster={item.poster_path}
+                        />
+                    )}
                 />
             </View>          
         </ScrollView>
