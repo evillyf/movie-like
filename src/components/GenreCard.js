@@ -11,7 +11,7 @@ const setWidth = (w) => (width / 100) *w;
 /* menu de navegação dos filmes */
 const GenreCard = ({genreName, active, onPress}) => {
     return (
-        <TouchableOpacity style={{...styles.container, backgroundColor: active ? COLORS.ACTIVE : COLORS.WHITE}} activeOpacity={0.5}
+        <TouchableOpacity style={{...styles.container, backgroundColor: active ? COLORS.ACTIVE : COLORS.YELLOW_LIGHT}} activeOpacity={0.5}
         onPress={() => onPress(genreName)}
         >
             <Text style={{...styles.genreText, color: active ? COLORS.WHITE : COLORS.BLACK}}>{genreName}</Text>
@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
     genreText: {
         fontSize: 13,
         color: COLORS.ACTIVE,
+        fontWeight: "bold",
     }
 });
 
