@@ -1,23 +1,35 @@
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import React, {useState} from "react";
+import { View, Text, StyleSheet, TouchableOpacity, Image, TouchableNativeFeedback } from "react-native";
 import COLORS from "../constants/Colors";
-import Fonts from "../constants/Fonts";
+import Fonts from "../constants/Fonts"
 import { AntDesign } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
+
 
 /* https://icons.expo.fyi/AntDesign/heart  - para pegar o import e render de ícones */
 const MovieCard = () => {
+    const [liked, setLiked] = useState(false)
+
+
     return (
         <TouchableOpacity>
             <View style={styles.container}>
-                <Text>Filme</Text>
+            <TouchableNativeFeedback onPress={() => setLiked(!liked)}>
+                <Ionicons 
+                    name={liked ? "heart" : "heart-outline"}
+                    size={25} 
+                    color={liked ? COLORS.HEART : COLORS.WHITE}
+                    style={{position: "absolute", bottom:10, left: 10}}
+                    />
+
+            </TouchableNativeFeedback>
             </View>
             <View>
                 <Text style={styles.movieTitle} numberOfLines={3}>Homem-Aranha: De volta ao lar</Text>
                 <View style={styles.movieSubTitleContainer}>
                     <Text style={styles.movieSubTitle}>Português | (BR)</Text>
                     <View style={styles.rowAndCenter}>
-                        <AntDesign 
+                        <Ionicons 
                         name="heart" 
                         size={17} 
                         color={COLORS.HEART}
