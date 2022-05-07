@@ -1,12 +1,12 @@
 import { StatusBar} from "expo-status-bar";
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { StyleSheet, Text, View, ScrollView, FlatList, Image} from "react-native";
 import COLORS from "../constants/Colors";
 import FONTS from "../constants/Fonts";
 import GenreCard from "../components/GenreCard";
 import MovieCard from "../components/MovieCard";
 import ItemSeparator from "../components/ItemSeparator";
-
+import { getNowPlayingMovies } from "../services/MovieService";
 
 
 /* definindo a lista de gêneros dos filmes */
@@ -15,6 +15,15 @@ const Genres = ["Todos", "Ação", "Comédia", "Romance", "Terror", "Sci-Fi"];
 /* definindo a barra de notificação - cores no arquivo Colors. styles pode ser dark, light, auto ou escolher uma cor */
 const HomeScreen = () => {
     const [activeGenre, setActiveGenre] = useState("Todos");
+    const [nowPlayingMovies, setNowPlayingMovies] = useState({});
+
+
+    useEffect(() => {
+        getNowPlayingMovies().then(movieResponse => 
+            setNowPlayingMovies(movieResponse.data)
+        );
+    },[]);
+
 
 
     return (
@@ -50,10 +59,10 @@ const HomeScreen = () => {
             </View>
             <View>
                 <FlatList
-                    data={Genres}
+                    data={nowPlayingMovies.results}
                     horizontal
                     showsHorizontalScrollIndicator={false}
-                    keyExtractor={(item) => item}
+                    keyExtractor={(item) => item.id.toString()}
                     ItemSeparatorComponent={() => <ItemSeparator width={20} />}
                     ListHeaderComponent={() => <ItemSeparator width={20} />}
                     ListFooterComponent={() => <ItemSeparator width={20} />}
@@ -63,12 +72,15 @@ const HomeScreen = () => {
                 />
             </View>          
         </ScrollView>
+        
                 
 
                 
         
     );
 };
+
+
 
 
 

@@ -9,7 +9,6 @@ import AppLoading from 'expo-app-loading';
 
 
 
-
 const Stack = createStackNavigator()
 
 
@@ -39,8 +38,6 @@ export default () => {
         />
       </Stack.Navigator>
     </NavigationContainer>
-
-    
   ) : (
     <AppLoading />
   );
