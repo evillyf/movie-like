@@ -39,7 +39,7 @@ const HomeScreen = () => {
 
                 <Image
                 style={styles.headerimage}
-                source={require('./cinema.png')}
+                source={require('./cinema1.png')}
             />                   
        
             
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     headerimage: {
-        height: 180,
+        height: 110,
         width: 390,
     }
 
