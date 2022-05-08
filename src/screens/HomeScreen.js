@@ -7,12 +7,18 @@ import GenreCard from "../components/GenreCard";
 import MovieCard from "../components/MovieCard";
 import ItemSeparator from "../components/ItemSeparator";
 import { getNowPlayingMovies } from "../services/MovieService";
-
+import { SafeAreaView } from "react-native";
 
 /* definindo a lista de gêneros dos filmes */
 const Genres = ["Todos", "Ação", "Comédia", "Romance", "Terror", "Sci-Fi"];
 
-/* definindo a barra de notificação - cores no arquivo Colors. styles pode ser dark, light, auto ou escolher uma cor */
+/* definindo a barra de notificação - cores no arquivo Colors. styles pode ser dark, light, auto ou escolher uma cor 
+                <Image
+                style={styles.imagepopcorn}
+                source={require('./popcorn.png')}
+            /> 
+
+*/
 const HomeScreen = () => {
     const [activeGenre, setActiveGenre] = useState("Todos");
     const [nowPlayingMovies, setNowPlayingMovies] = useState({});
@@ -29,14 +35,15 @@ const HomeScreen = () => {
     return (
         <ScrollView contentContainerStyle={styles.container}>    
             <StatusBar style="auto" translucent={false} backgroundColor={COLORS.ACTIVE}/>   
+            
 
+                <Image
+                style={styles.headerimage}
+                source={require('./cinema.png')}
+            />                   
+       
             
             <View style={styles.headerContainer}> 
-                <Text style={styles.headerTitle}>EM CARTAZ</Text>
-                <Image
-                style={styles.image}
-                source={require('./logo_gray.png')}
-            />
             </View>
 
             <View style={styles.genrelistContainer}> 
@@ -130,8 +137,20 @@ const styles = StyleSheet.create({
         width:80, 
         height: 80,
 
+    },
+    imagepopcorn: {
+        width: 30,
+        height:35,
+    },
+    popcordheader: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+    },
+    headerimage: {
+        height: 180,
+        width: 390,
     }
-
 
 
 });
