@@ -1,33 +1,36 @@
 import React, {useState} from "react";
-import { View, Text, StyleSheet, TouchableOpacity, Image, TouchableNativeFeedback } from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity, ImageBackground, TouchableNativeFeedback } from "react-native";
 import COLORS from "../constants/Colors";
 import Fonts from "../constants/Fonts"
 import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
-
+import {getPoster} from "../services/MovieService";
 
 /* https://icons.expo.fyi/AntDesign/heart  - para pegar o import e render de ícones */
-const MovieCard = () => {
+const MovieCard = ({title, poster, language, voteAvarage, voteCount}) => {
     const [liked, setLiked] = useState(false)
 
 
     return (
         <TouchableOpacity>
-            <View style={styles.container}>
-            <TouchableNativeFeedback onPress={() => setLiked(!liked)}>
-                <Ionicons 
-                    name={liked ? "heart" : "heart-outline"}
-                    size={25} 
-                    color={liked ? COLORS.HEART : COLORS.WHITE}
-                    style={{position: "absolute", bottom:10, left: 10}}
-                    />
+            <ImageBackground 
+                style={styles.container} 
+                source={{uri: getPoster(poster) }}>
+                <TouchableNativeFeedback onPress={() => setLiked(!liked)}>
+                    <Ionicons 
+                        name={liked ? "heart" : "heart-outline"}
+                        size={25} 
+                        color={liked ? COLORS.HEART : COLORS.WHITE}
+                        style={{position: "absolute", bottom:10, left: 10}}
+                        />
 
-            </TouchableNativeFeedback>
-            </View>
+                </TouchableNativeFeedback>
+            </ImageBackground>
+            
             <View>
-                <Text style={styles.movieTitle} numberOfLines={3}>Homem-Aranha: De volta ao lar</Text>
+                <Text style={styles.movieTitle} numberOfLines={3}>{title}</Text>
                 <View style={styles.movieSubTitleContainer}>
-                    <Text style={styles.movieSubTitle}>Português | (BR)</Text>
+                    <Text style={styles.movieSubTitle}>{language}</Text>
                     <View style={styles.rowAndCenter}>
                         <Ionicons 
                         name="heart" 
@@ -36,10 +39,11 @@ const MovieCard = () => {
                         style={{ marginRight: 5}}
                         
                         />
-                        <Text>90%</Text>
+                        <Text style={styles.movieSubTitle}>{voteCount}</Text>
                     </View>
                 </View>
             </View>
+            
         </TouchableOpacity> 
 
     );
