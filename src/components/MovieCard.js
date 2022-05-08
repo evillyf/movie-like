@@ -15,6 +15,7 @@ const MovieCard = ({title, poster, language, voteAvarage, voteCount}) => {
         <TouchableOpacity>
             <ImageBackground 
                 style={styles.container} 
+                imageStyle={{ borderRadius: 12 }}
                 source={{uri: getPoster(poster) }}>
                 <TouchableNativeFeedback onPress={() => setLiked(!liked)}>
                     <Ionicons 
