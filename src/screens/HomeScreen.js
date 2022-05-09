@@ -18,6 +18,8 @@ const Genres = ["Todos", "Ação", "Comédia", "Romance", "Terror", "Sci-Fi"];
                 source={require('./popcorn.png')}
             /> 
 
+
+
 */
 const HomeScreen = () => {
     const [activeGenre, setActiveGenre] = useState("Todos");
@@ -83,7 +85,11 @@ const HomeScreen = () => {
                         />
                     )}
                 />
-            </View>          
+            </View>   
+            <View style={styles.headerContainer}>
+                <Text style={{...styles.headerTitle, paddingHorizontal: 13,}}>Em breve</Text>
+                <Text style={{...styles.headerSubTitle, paddingVertical: 41, paddingHorizontal:13}}>VER TODOS</Text>              
+            </View>       
         </ScrollView>
         
                 
@@ -116,12 +122,12 @@ const styles = StyleSheet.create({
     },
 
     headerTitle: {
-        fontSize: 28,
-        fontFamily: FONTS.BOLD,
+        fontSize: 23,
+        fontFamily: "Ultra",
         color: COLORS.BLACK,
-        textShadowColor: COLORS.BLACK,
-        textShadowOffset: {width: -1, height: -1},
-        textShadowRadius: 2,
+
+
+
 
     },
     headerSubTitle: {

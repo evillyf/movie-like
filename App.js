@@ -21,6 +21,7 @@ export default () => {
     ExtraLight: require("./assets/fonts/Nunito-ExtraLight.ttf"),
     Light: require("./assets/fonts/Nunito-Light.ttf"),
     SemiBold: require("./assets/fonts/Nunito-SemiBold.ttf"),
+    Ultra: require("./assets/fonts/Ultra-Regular.ttf"),
   });
 
   return fontLoaded ? (

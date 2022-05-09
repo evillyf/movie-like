@@ -6,4 +6,5 @@ export default {
     EXTRA_LIGHT: "ExtraLight",
     SEMI_BOLD: "SemiBold",
     BOLD: "Bold",
+    ULTRA: "Ultra-Regular",
   };

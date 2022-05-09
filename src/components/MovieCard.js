@@ -7,20 +7,20 @@ import { Ionicons } from '@expo/vector-icons';
 import {getPoster, getLanguage} from "../services/MovieService";
 
 /* https://icons.expo.fyi/AntDesign/heart  - para pegar o import e render de ícones */
-const MovieCard = ({title, poster, language, voteAvarage, voteCount}) => {
+const MovieCard = ({title, poster, language, voteAvarage, voteCount, size}) => {
     const [liked, setLiked] = useState(false)
 
 
     return (
-        <TouchableOpacity>
+        <TouchableOpacity activeOpacity={0.8}>
             <ImageBackground 
-                style={styles.container} 
+                style={{...styles.container, width: 230 * size, height: 340 * size} }
                 imageStyle={{ borderRadius: 12 }}
                 source={{uri: getPoster(poster) }}>
                 <TouchableNativeFeedback onPress={() => setLiked(!liked)}>
                     <Ionicons 
                         name={liked ? "heart" : "heart-outline"}
-                        size={25} 
+                        size={25 * size} 
                         color={liked ? COLORS.HEART : COLORS.WHITE}
                         style={{position: "absolute", bottom:10, left: 10}}
                         />
@@ -29,13 +29,13 @@ const MovieCard = ({title, poster, language, voteAvarage, voteCount}) => {
             </ImageBackground>
             
             <View>
-                <Text style={styles.movieTitle} numberOfLines={3}>{title}</Text>
+                <Text style={{...styles.movieTitle, width: 230 * size}} numberOfLines={3}>{title}</Text>
                 <View style={styles.movieSubTitleContainer}>
                     <Text style={styles.movieSubTitle}>{getLanguage(language).english_name}</Text>
                     <View style={styles.rowAndCenter}>
                         <Ionicons 
                         name="heart" 
-                        size={17} 
+                        size={17 * size} 
                         color={COLORS.HEART}
                         style={{ marginRight: 5}}
                         
@@ -88,5 +88,9 @@ const styles = StyleSheet.create({
     },
 
 });
+
+MovieCard.defaultProps = {
+    size: 1,
+}
 
 export default MovieCard;

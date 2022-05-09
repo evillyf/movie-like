@@ -4,11 +4,6 @@ export default [
       "english_name": "No Language",
       "name": "No Language"
     },
-    {
-      "iso_639_1": "en",
-      "english_name": "Inglês",
-      "name": "English",
-    },
 
     {
       "iso_639_1": "aa",
@@ -132,7 +127,7 @@ export default [
     },
     {
       "iso_639_1": "de",
-      "english_name": "German",
+      "english_name": "Alemão",
       "name": "Deutsch"
     },
     {
@@ -302,7 +297,7 @@ export default [
     },
     {
       "iso_639_1": "it",
-      "english_name": "Italian",
+      "english_name": "Italiano",
       "name": "Italiano"
     },
     {
@@ -312,7 +307,7 @@ export default [
     },
     {
       "iso_639_1": "ja",
-      "english_name": "Japanese",
+      "english_name": "Japonês",
       "name": "日本語"
     },
     {
@@ -897,7 +892,7 @@ export default [
     },
     {
       "iso_639_1": "en",
-      "english_name": "English",
+      "english_name": "Inglês",
       "name": "English"
     },
     {
