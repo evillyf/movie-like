@@ -4,7 +4,7 @@ import COLORS from "../constants/Colors";
 import Fonts from "../constants/Fonts"
 import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
-import {getPoster} from "../services/MovieService";
+import {getPoster, getLanguage} from "../services/MovieService";
 
 /* https://icons.expo.fyi/AntDesign/heart  - para pegar o import e render de ícones */
 const MovieCard = ({title, poster, language, voteAvarage, voteCount}) => {
@@ -31,7 +31,7 @@ const MovieCard = ({title, poster, language, voteAvarage, voteCount}) => {
             <View>
                 <Text style={styles.movieTitle} numberOfLines={3}>{title}</Text>
                 <View style={styles.movieSubTitleContainer}>
-                    <Text style={styles.movieSubTitle}>{language}</Text>
+                    <Text style={styles.movieSubTitle}>{getLanguage(language).english_name}</Text>
                     <View style={styles.rowAndCenter}>
                         <Ionicons 
                         name="heart" 

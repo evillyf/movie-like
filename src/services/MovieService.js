@@ -4,6 +4,7 @@ import { TMDB_BASE_URL,
     TMDB_IMAGE_BASE_URL, 
     ENDPOINTS, 
 } from "../constants/Urls";
+import LANGUAGES from "../constants/Languages";
 
 
 const TMDB_HTTP_REQUEST = axios.create({
@@ -19,4 +20,6 @@ const getNowPlayingMovies = () =>
 
 const getPoster = (path) => `${TMDB_IMAGE_BASE_URL}/original${path}`;
 
-export { getNowPlayingMovies, getPoster };
+const getLanguage = (language_iso) => LANGUAGES.find((language) => language.iso_639_1 === language_iso); 
+
+export { getNowPlayingMovies, getPoster, getLanguage };

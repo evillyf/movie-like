@@ -39,7 +39,7 @@ const HomeScreen = () => {
 
                 <Image
                 style={styles.headerimage}
-                source={require('./cinema1.png')}
+                source={require('../images/cinema1.png')}
             />                   
        
             
