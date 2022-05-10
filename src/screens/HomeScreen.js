@@ -6,7 +6,7 @@ import FONTS from "../constants/Fonts";
 import GenreCard from "../components/GenreCard";
 import MovieCard from "../components/MovieCard";
 import ItemSeparator from "../components/ItemSeparator";
-import { getNowPlayingMovies, getUpcomingMovies } from "../services/MovieService";
+import { getNowPlayingMovies, getUpcomingMovies, getAllGenres } from "../services/MovieService";
 import { SafeAreaView } from "react-native";
 
 
@@ -28,6 +28,7 @@ const HomeScreen = () => {
     const [activeGenre, setActiveGenre] = useState("Todos");
     const [nowPlayingMovies, setNowPlayingMovies] = useState({});
     const [upcomingMovies, setUpcomingMovies] = useState({});
+    const [genres, setGenres] = useState([{id: 10110, name: "Todos"}]);
     
 
     useEffect(() => {
@@ -37,6 +38,10 @@ const HomeScreen = () => {
         getUpcomingMovies().then((movieResponse) => 
             setUpcomingMovies(movieResponse.data)
         );
+        getAllGenres().then((genreResponse) => 
+            setGenres([...genres, ...genreResponse.data.genres])
+        );
+
     },[]);
 
 
@@ -81,17 +86,17 @@ const HomeScreen = () => {
 
             <View style={styles.genrelistContainer}> 
                 <FlatList 
-                    data= {Genres} 
+                    data= {genres} 
                     horizontal 
                     showsHorizontalScrollIndicator={false}
-                    keyExtractor={(item) => item} 
+                    keyExtractor={(item) => item.id.toString()} 
                     ItemSeparatorComponent={() => <ItemSeparator width={20}/>}
                     ListHeaderComponent={() => <ItemSeparator width={20}/>}
                     ListFooterComponent={() => <ItemSeparator width={20}/>}
                     renderItem={({ item }) => (
                         <GenreCard
-                            genreName={item}
-                            active={item === activeGenre ? true : false}
+                            genreName={item.name}
+                            active={item.name === activeGenre ? true : false}
                             onPress={setActiveGenre}
                         />
                     )}
@@ -228,7 +233,6 @@ const styles = StyleSheet.create({
     loginText:{
         color: COLORS.BLACK,
         fontWeight: "bold",
-        fontFamily: "Ultra",
     },
 
 
