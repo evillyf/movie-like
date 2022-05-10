@@ -6,7 +6,7 @@ import FONTS from "../constants/Fonts";
 import GenreCard from "../components/GenreCard";
 import MovieCard from "../components/MovieCard";
 import ItemSeparator from "../components/ItemSeparator";
-import { getNowPlayingMovies } from "../services/MovieService";
+import { getNowPlayingMovies, getUpcomingMovies } from "../services/MovieService";
 import { SafeAreaView } from "react-native";
 
 
@@ -27,24 +27,30 @@ const Genres = ["Todos", "Ação", "Comédia", "Romance", "Terror", "Sci-Fi"];
 const HomeScreen = () => {
     const [activeGenre, setActiveGenre] = useState("Todos");
     const [nowPlayingMovies, setNowPlayingMovies] = useState({});
-    
-const showMessage = () => {
-
-    Alert.alert('Redirecionamento para tela de Login/Cadastro');
-
-  }
+    const [upcomingMovies, setUpcomingMovies] = useState({});
     
 
     useEffect(() => {
-        getNowPlayingMovies().then(movieResponse => 
+        getNowPlayingMovies().then((movieResponse) => 
             setNowPlayingMovies(movieResponse.data)
+        );
+        getUpcomingMovies().then((movieResponse) => 
+            setUpcomingMovies(movieResponse.data)
         );
     },[]);
 
 
 
+    const showMessage = () => {
+
+        Alert.alert('Redirecionamento para tela de Login/Cadastro');
+    
+      }
+
+
+
     return (
-        <ScrollView contentContainerStyle={styles.container}>    
+        <ScrollView style={styles.container}>    
             <StatusBar style="auto" translucent={false} backgroundColor={COLORS.ACTIVE}/>   
             
 
@@ -58,7 +64,7 @@ const showMessage = () => {
                     <Text 
                     style={styles.loginText}
                     onPress={showMessage}>
-                    Login</Text>
+                    Login</Text>                  
             </TouchableOpacity>  
 
 
@@ -110,12 +116,34 @@ const showMessage = () => {
                         />
                     )}
                 />
-            </View>   
+            </View>               
             <View style={styles.headerContainer}>
                 <Text style={{...styles.headerTitle, paddingHorizontal: 13,}}>Em breve</Text>
                 <Text style={{...styles.headerSubTitle, paddingVertical: 41, paddingHorizontal:13}}>VER TODOS</Text>              
-            </View>       
+            </View> 
+            <View>
+            <FlatList
+                    data={upcomingMovies.results}
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                    keyExtractor={(item) => item.id.toString()}
+                    ItemSeparatorComponent={() => <ItemSeparator width={20} />}
+                    ListHeaderComponent={() => <ItemSeparator width={20} />}
+                    ListFooterComponent={() => <ItemSeparator width={20} />}
+                    renderItem={({ item }) => (
+                        <MovieCard 
+                            title={item.title} 
+                            language={item.original_language} 
+                            voteAvarage={item.vote_avarage}
+                            voteCount={item.vote_count}
+                            poster={item.poster_path}
+                            size={0.7}
+                        />
+                    )}
+                />
+            </View>                             
         </ScrollView>
+        
         
                 
 
@@ -201,9 +229,8 @@ const styles = StyleSheet.create({
         color: COLORS.BLACK,
         fontWeight: "bold",
         fontFamily: "Ultra",
+    },
 
-
-    }  
 
 });
 

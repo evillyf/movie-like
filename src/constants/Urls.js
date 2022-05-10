@@ -7,7 +7,7 @@ const TMDB_API_KEY = "f48357e6eac3e7c39cf91e2288176e5b"
 
 const ENDPOINTS = {
     NOW_PLAYING_MOVIES: "/movie/now_playing?&language=pt-BR",
-    UPCOMING_MOVIES: "/movie/upcoming",
+    UPCOMING_MOVIES: "/movie/upcoming?&language=pt-BR",
  
 
 };
