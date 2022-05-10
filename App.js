@@ -24,6 +24,8 @@ export default () => {
     Ultra: require("./assets/fonts/Ultra-Regular.ttf"),
   });
 
+
+
   return fontLoaded ? (
     <NavigationContainer>
       <Stack.Navigator>

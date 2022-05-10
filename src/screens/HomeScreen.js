@@ -1,6 +1,6 @@
 import { StatusBar} from "expo-status-bar";
 import React, {useState, useEffect} from "react";
-import { StyleSheet, Text, View, ScrollView, FlatList, Image} from "react-native";
+import { StyleSheet, Text, View, Button, ImageBackground,ScrollView, TouchableOpacity, FlatList, Alert, Image} from "react-native";
 import COLORS from "../constants/Colors";
 import FONTS from "../constants/Fonts";
 import GenreCard from "../components/GenreCard";
@@ -8,6 +8,9 @@ import MovieCard from "../components/MovieCard";
 import ItemSeparator from "../components/ItemSeparator";
 import { getNowPlayingMovies } from "../services/MovieService";
 import { SafeAreaView } from "react-native";
+
+
+
 
 /* definindo a lista de gêneros dos filmes */
 const Genres = ["Todos", "Ação", "Comédia", "Romance", "Terror", "Sci-Fi"];
@@ -24,7 +27,13 @@ const Genres = ["Todos", "Ação", "Comédia", "Romance", "Terror", "Sci-Fi"];
 const HomeScreen = () => {
     const [activeGenre, setActiveGenre] = useState("Todos");
     const [nowPlayingMovies, setNowPlayingMovies] = useState({});
+    
+const showMessage = () => {
 
+    Alert.alert('Redirecionamento para tela de Login/Cadastro');
+
+  }
+    
 
     useEffect(() => {
         getNowPlayingMovies().then(movieResponse => 
@@ -39,10 +48,26 @@ const HomeScreen = () => {
             <StatusBar style="auto" translucent={false} backgroundColor={COLORS.ACTIVE}/>   
             
 
-                <Image
+                <ImageBackground
                 style={styles.headerimage}
                 source={require('../images/cinema1.png')}
-            />                   
+            >
+
+            <View>
+            <TouchableOpacity style={styles.loginBtn}>
+                    <Text 
+                    style={styles.loginText}
+                    onPress={showMessage}>
+                    Login</Text>
+            </TouchableOpacity>  
+
+
+
+            </View>
+
+                </ImageBackground>   
+
+            
        
             
             <View style={styles.headerContainer}> 
@@ -156,8 +181,29 @@ const styles = StyleSheet.create({
     headerimage: {
         height: 110,
         width: 390,
-    }
+    },
 
+   
+    loginBtn: {
+      width:"80%",
+      borderRadius:25,
+      height:50,
+      alignItems:"center",
+      justifyContent:"center",
+      marginTop:40,
+      backgroundColor:COLORS.YELLOW_LIGHT,
+      left: 274,
+      width: 75,
+      height: 23,
+      top: -30,     
+    },
+    loginText:{
+        color: COLORS.BLACK,
+        fontWeight: "bold",
+        fontFamily: "Ultra",
+
+
+    }  
 
 });
 
