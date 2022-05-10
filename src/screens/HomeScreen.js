@@ -118,6 +118,7 @@ const HomeScreen = () => {
                             voteAvarage={item.vote_avarage}
                             voteCount={item.vote_count}
                             poster={item.poster_path}
+                            heartLess={false}
                         />
                     )}
                 />

@@ -7,8 +7,9 @@ import { Ionicons } from '@expo/vector-icons';
 import {getPoster, getLanguage} from "../services/MovieService";
 
 /* https://icons.expo.fyi/AntDesign/heart  - para pegar o import e render de ícones */
-const MovieCard = ({title, poster, language, voteAvarage, voteCount, size}) => {
-    const [liked, setLiked] = useState(false)
+const MovieCard = ({title, poster, language, voteAvarage, voteCount, size, heartLess}) => {
+    const [liked, setLiked] = useState(false);
+    const[voteCountValue, setVoteCountValue] = useState(voteCount);
 
 
     return (
@@ -17,7 +18,17 @@ const MovieCard = ({title, poster, language, voteAvarage, voteCount, size}) => {
                 style={{...styles.container, width: 230 * size, height: 340 * size} }
                 imageStyle={{ borderRadius: 12 }}
                 source={{uri: getPoster(poster) }}>
-                <TouchableNativeFeedback onPress={() => setLiked(!liked)}>
+                    
+                {!heartLess ? (
+                    <TouchableNativeFeedback 
+                        onPress={() => {
+                            setLiked(!liked);
+                            setVoteCountValue(
+                                liked ? voteCountValue - 1 : voteCountValue + 1
+                            );
+                    
+                        }}
+                    >
                     <Ionicons 
                         name={liked ? "heart" : "heart-outline"}
                         size={25 * size} 
@@ -26,6 +37,7 @@ const MovieCard = ({title, poster, language, voteAvarage, voteCount, size}) => {
                         />
 
                 </TouchableNativeFeedback>
+                ) : null}
             </ImageBackground>
             
             <View>
@@ -40,7 +52,7 @@ const MovieCard = ({title, poster, language, voteAvarage, voteCount, size}) => {
                         style={{ marginRight: 5}}
                         
                         />
-                        <Text style={styles.movieSubTitle}>{voteCount}</Text>
+                        <Text style={styles.movieSubTitle}>{voteCountValue}</Text>
                     </View>
                 </View>
             </View>
@@ -91,6 +103,7 @@ const styles = StyleSheet.create({
 
 MovieCard.defaultProps = {
     size: 1,
+    heartLess: true,
 }
 
 export default MovieCard;
