@@ -1,10 +1,28 @@
 {
   "expo": {
-    "name": "movielike",
+    "name": "MovieLike",
     "slug": "movielike",
+    "scheme": "movielike",
     "version": "1.0.0",
+    "privacy": "public",
+    "platforms": [
+      "android"
+
+    ],
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#D4AF37"
+    }
+    },
+    "android": {
+      "package": "com.movielike.movielike",
+      "versionCode": 1
+    }   
   }
-}
+

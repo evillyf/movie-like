@@ -9,6 +9,7 @@ import AppLoading from 'expo-app-loading';
 
 
 
+
 const Stack = createStackNavigator()
 
 
@@ -28,7 +29,7 @@ export default () => {
 
   return fontLoaded ? (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator>   
         <Stack.Screen
           name="home"
           component={HomeScreen}
@@ -44,5 +45,6 @@ export default () => {
   ) : (
     <AppLoading />
   );
+  
 };
 
