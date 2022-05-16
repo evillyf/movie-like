@@ -7,7 +7,6 @@
     "privacy": "public",
     "platforms": [
       "android"
-
     ],
     "assetBundlePatterns": [
       "**/*"
@@ -15,14 +14,15 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
-      "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#D4AF37"
-    }
     },
     "android": {
-      "package": "com.movielike.movielike",
-      "versionCode": 1
-    }   
+      "package": "HOST.EXP.EXPONENT"
+    }
+  },
+  "android": {
+    "package": "com.movielike.movielike",
+    "versionCode": 1
   }
-
+}
