@@ -7,7 +7,9 @@ import GenreCard from "../components/GenreCard";
 import MovieCard from "../components/MovieCard";
 import ItemSeparator from "../components/ItemSeparator";
 import { getNowPlayingMovies, getUpcomingMovies, getAllGenres } from "../services/MovieService";
-import { SafeAreaView } from "react-native";
+import { auth } from "../../firebase";
+import { useNavigation } from "@react-navigation/core";
+
 
 
 
@@ -45,12 +47,16 @@ const HomeScreen = () => {
     },[]);
 
 
+   const navigation = useNavigation() 
 
-    const showMessage = () => {
+    const handleSignOut = () => {
+        auth
+        .signOut()
+        .then(() => {
+            navigation.replace("login")
 
-        Alert.alert('Redirecionamento para tela de Login/Cadastro');
-    
-      }
+        })
+    }
 
 
 
@@ -63,13 +69,15 @@ const HomeScreen = () => {
                 style={styles.headerimage}
                 source={require('../images/cinema1.png')}
             >
+                
 
             <View>
             <TouchableOpacity style={styles.loginBtn}>
+                
                     <Text 
                     style={styles.loginText}
-                    onPress={showMessage}>
-                    Login</Text>                  
+                    onPress={handleSignOut}>
+                    Logout</Text>                  
             </TouchableOpacity>  
 
 

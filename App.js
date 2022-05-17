@@ -6,9 +6,7 @@ import HomeScreen from './src/screens/HomeScreen';
 import MovieScreen from './src/screens/MovieScreen';
 import {useFonts} from "expo-font";
 import AppLoading from 'expo-app-loading';
-import movie from './movie.json';
-import Lottie from 'lottie-react-native';
-
+import LoginScreen from './src/screens/LoginScreen';
 
 
 const Stack = createStackNavigator()
@@ -30,11 +28,12 @@ export default () => {
 
   return fontLoaded ? (
     <NavigationContainer>
-      <SafeAreaView style={{ flex: 1, justifyContent:'center', alignItems: 'center'}}>
-        <Lottie  auto resizeMode="contain" source={movie} autoPlay loop />
-
-      </SafeAreaView>
       <Stack.Navigator>   
+      <Stack.Screen
+          name="login"
+          component={LoginScreen}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen
           name="home"
           component={HomeScreen}
