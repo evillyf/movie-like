@@ -57,18 +57,22 @@ const LoginScreen = () => {
     
       <View style={styles.inputContainer}>
           <TextInput
-          placeholder="E-mail"
-          value= {email}
-          onChangeText={text => setEmail(text)}
-          style={styles.input}
+        placeholder="E-mail"
+        returnKeyType="next"
+        onSubmitEditing={() => { this.secondTextInput.focus(); }}
+        blurOnSubmit={false}         
+        value= {email}
+        onChangeText={text => setEmail(text)}
+        style={styles.input}
           />
-          <TextInput
-          placeholder="Senha"
-          value={password}
-          onChangeText={text => setPassword(text) }
-          style={styles.input}
-          secureTextEntry
-          />          
+        <TextInput
+            ref={(input) => { this.secondTextInput = input; }}
+            placeholder="Senha"          
+            value={password}
+            onChangeText={text => setPassword(text) }
+            style={styles.input}
+            secureTextEntry
+        />          
       </View>
       <View style={styles.buttonContainer}>
           <TouchableOpacity
