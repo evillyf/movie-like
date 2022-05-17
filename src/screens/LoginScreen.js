@@ -1,6 +1,6 @@
 import { KeyboardAvoidingView, StyleSheet, Text, TextInput, View } from 'react-native';
 import React, { useEffect, useState} from 'react'
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import Fonts from '../constants/Fonts';
 import Colors from '../constants/Colors';
 import {auth } from '../../firebase';
@@ -18,7 +18,7 @@ const LoginScreen = () => {
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
             if (user) {
-                navigation.replace("home")
+                navigation.navigate("home")
             }
         })
         return unsubscribe
@@ -45,11 +45,16 @@ const LoginScreen = () => {
         .catch(error => alert(error.message))
     }
 
+
+
   return (
+      
     <KeyboardAvoidingView
-        style={styles.container}
-        behavior="padding"
+    behavior={Platform.OS === "ios" ? "padding" : "height"}
+    enabled={false}
+    style={styles.container}
     >
+    
       <View style={styles.inputContainer}>
           <TextInput
           placeholder="E-mail"
@@ -79,7 +84,9 @@ const LoginScreen = () => {
                 <Text style={styles.buttonOutlineText}>Cadastre-se</Text>
           </TouchableOpacity>          
       </View>
+      
     </KeyboardAvoidingView>
+    
   )
 }
 
