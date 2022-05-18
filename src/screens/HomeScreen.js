@@ -1,6 +1,6 @@
 import { StatusBar} from "expo-status-bar";
 import React, {useState, useEffect} from "react";
-import { StyleSheet, Text, View, Button, ImageBackground,ScrollView, TouchableOpacity, FlatList, Alert, Image} from "react-native";
+import { StyleSheet, Text, View, Button, ImageBackground,ScrollView, TouchableOpacity, FlatList, Alert, Image, Switch} from "react-native";
 import COLORS from "../constants/Colors";
 import FONTS from "../constants/Fonts";
 import GenreCard from "../components/GenreCard";
@@ -65,11 +65,14 @@ const HomeScreen = () => {
             <StatusBar style="auto" translucent={false} backgroundColor={COLORS.ACTIVE}/>   
             
 
-                <ImageBackground
+            <ImageBackground
                 style={styles.headerimage}
                 source={require('../images/cinema1.png')}
             >
-                
+
+            <View style={styles.switch}>
+                <Switch />
+            </View>                        
 
             <View>
             <TouchableOpacity style={styles.loginBtn}>
@@ -79,10 +82,9 @@ const HomeScreen = () => {
                     onPress={handleSignOut}>
                     Logout</Text>                  
             </TouchableOpacity>  
-
-
-
             </View>
+
+
 
                 </ImageBackground>   
 
@@ -91,6 +93,9 @@ const HomeScreen = () => {
             
             <View style={styles.headerContainer}> 
             </View>
+
+
+
 
             <View style={styles.genrelistContainer}> 
                 <FlatList 
@@ -232,7 +237,7 @@ const styles = StyleSheet.create({
       height:50,
       alignItems:"center",
       justifyContent:"center",
-      marginTop:40,
+      marginTop:-25,
       backgroundColor:COLORS.YELLOW_LIGHT,
       left: 274,
       width: 75,
@@ -243,6 +248,14 @@ const styles = StyleSheet.create({
         color: COLORS.BLACK,
         fontWeight: "bold",
     },
+    switch: {
+        justifyContent:"center",
+        marginTop:40,
+        left: 128,
+        width: 75,
+        height: 23,
+        top: -30,        
+    }
 
 
 });
