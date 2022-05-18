@@ -1,4 +1,4 @@
-import { KeyboardAvoidingView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { ImageBackground, KeyboardAvoidingView, StyleSheet, Text, TextInput, View } from 'react-native';
 import React, { useEffect, useState} from 'react'
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import Fonts from '../constants/Fonts';
@@ -47,15 +47,22 @@ const LoginScreen = () => {
 
 
 
+
+
   return (
-      
+
+    <ImageBackground
+    source={require('../images/back-movie.jpg')} resizeMode="cover" style={styles.image}
+    >   
     <KeyboardAvoidingView
     behavior={Platform.OS === "ios" ? "padding" : "height"}
     enabled={false}
     style={styles.container}
     >
-    
       <View style={styles.inputContainer}>
+
+
+
           <TextInput
         placeholder="E-mail"
         returnKeyType="next"
@@ -86,10 +93,12 @@ const LoginScreen = () => {
               style={[styles.button, styles.buttonOutline]}
             >
                 <Text style={styles.buttonOutlineText}>Cadastre-se</Text>
-          </TouchableOpacity>          
+          </TouchableOpacity>      
+            
       </View>
-      
+
     </KeyboardAvoidingView>
+    </ImageBackground>
     
   )
 }
@@ -149,5 +158,13 @@ const styles = StyleSheet.create({
         fontSize: 16,
 
     },
+    image: {
+        position: 'absolute',
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
+        
+    }
 
 })
