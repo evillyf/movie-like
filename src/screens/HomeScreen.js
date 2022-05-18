@@ -1,5 +1,5 @@
 import { StatusBar} from "expo-status-bar";
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import { StyleSheet, Text, View, Button, ImageBackground,ScrollView, TouchableOpacity, FlatList, Alert, Image, Switch} from "react-native";
 import COLORS from "../constants/Colors";
 import FONTS from "../constants/Fonts";
@@ -9,7 +9,9 @@ import ItemSeparator from "../components/ItemSeparator";
 import { getNowPlayingMovies, getUpcomingMovies, getAllGenres } from "../services/MovieService";
 import { auth } from "../../firebase";
 import { useNavigation } from "@react-navigation/core";
-
+import {EventRegister} from "react-native-event-listeners";
+import themeContext from "../config/themeContext";
+import Colors from "../constants/Colors";
 
 
 
@@ -27,6 +29,8 @@ const Genres = ["Todos", "Ação", "Comédia", "Romance", "Terror", "Sci-Fi"];
 
 */
 const HomeScreen = () => {
+
+
     const [activeGenre, setActiveGenre] = useState("Todos");
     const [nowPlayingMovies, setNowPlayingMovies] = useState({});
     const [upcomingMovies, setUpcomingMovies] = useState({});
@@ -58,10 +62,13 @@ const HomeScreen = () => {
         })
     }
 
+    const theme = useContext(themeContext);
+    const [mode, setMode] = useState(false);
+
 
 
     return (
-        <ScrollView style={styles.container}>    
+        <ScrollView style={{...styles.container, backgroundColor: theme.backgroundColor}}>    
             <StatusBar style="auto" translucent={false} backgroundColor={COLORS.ACTIVE}/>   
             
 
@@ -71,7 +78,11 @@ const HomeScreen = () => {
             >
 
             <View style={styles.switch}>
-                <Switch />
+                <Switch value={mode} onValueChange={(value) => {
+                    setMode(value);
+                    EventRegister.emit("changeTheme", value);
+                    
+                    }}/>
             </View>                        
 
             <View>
@@ -137,7 +148,7 @@ const HomeScreen = () => {
                 />
             </View>               
             <View style={styles.headerContainer}>
-                <Text style={{...styles.headerTitle, paddingHorizontal: 13,}}>Em breve</Text>
+                <Text style={{...styles.headerTitle, paddingHorizontal: 13, color: theme.color}}>Em breve</Text>
                 <Text style={{...styles.headerSubTitle, paddingVertical: 41, paddingHorizontal:13}}>VER TODOS</Text>              
             </View> 
             <View>
@@ -183,7 +194,7 @@ const HomeScreen = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: COLORS.EXTRA_LIGHT_GRAY,  /* definindo a cor de fundo. COLORS.EXTRA_LIGHT_GRAY ou WHITE ou COLORS.DARK_GRAY*/
+        backgroundColor: Colors.ACTIVE,   /* definindo a cor de fundo. COLORS.EXTRA_LIGHT_GRAY ou WHITE ou COLORS.DARK_GRAY.           backgroundColor: COLORS.EXTRA_LIGHT_GRAY, */
     },
     headerContainer: {
         flexDirection: "row",
