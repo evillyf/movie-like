@@ -1,6 +1,6 @@
 import { StatusBar} from "expo-status-bar";
 import React, {useState, useEffect, useContext} from "react";
-import { StyleSheet, Text, View, Button, ImageBackground,ScrollView, TouchableOpacity, FlatList, Alert, Image, Switch} from "react-native";
+import { StyleSheet, Text, View, Button, ImageBackground, ScrollView, TouchableOpacity, FlatList, Alert, Image, Switch, SafeAreaView} from "react-native";
 import COLORS from "../constants/Colors";
 import FONTS from "../constants/Fonts";
 import GenreCard from "../components/GenreCard";
@@ -72,11 +72,8 @@ const HomeScreen = () => {
             <StatusBar style="auto" translucent={false} backgroundColor={COLORS.ACTIVE}/>   
             
 
-            <ImageBackground
-                style={styles.headerimage}
-                source={require('../images/cinema1.png')}
-            >
 
+            <SafeAreaView style={styles.safearea}>
             <View style={styles.switch}>
                 <Switch value={mode} onValueChange={(value) => {
                     setMode(value);
@@ -94,10 +91,20 @@ const HomeScreen = () => {
                     Logout</Text>                  
             </TouchableOpacity>  
             </View>
+            </SafeAreaView>
+
+            <ImageBackground
+                style={styles.headerimage}
+                source={require('../images/pipoca_vetor.png')}
+            />
+
+            <View>
+            </View> 
+                       
 
 
 
-                </ImageBackground>   
+  
 
             
        
@@ -201,7 +208,7 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         alignItems: "center",
         paddingHorizontal: 20,
-        paddingVertical: 10,
+        paddingVertical: -70,
     },
 
     headerTitle: {
@@ -237,8 +244,10 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     headerimage: {
-        height: 110,
-        width: 390,
+        height: 150,
+        width: 150,
+        left: -44,
+        top: -67,
     },
 
    
@@ -266,6 +275,21 @@ const styles = StyleSheet.create({
         width: 75,
         height: 23,
         top: -30,        
+    },
+    safearea:{
+        width: 700,
+        top:60,
+        backgroundColor: COLORS.ACTIVE,
+        height: 40,
+        left: 0,
+        top: 0,
+    },
+    popcorn_image:{
+        position: 'absolute',
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
     }
 
 

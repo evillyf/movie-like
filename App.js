@@ -1,6 +1,6 @@
 
 import React, {useState, useEffect} from 'react';
-import {NavigationContainer, DarkTheme, DefaultTheme} from "@react-navigation/native";
+import {NavigationContainer, LightTheme, DarkTheme, DefaultTheme} from "@react-navigation/native";
 import {createStackNavigator} from "@react-navigation/stack";
 import HomeScreen from './src/screens/HomeScreen';
 import MovieScreen from './src/screens/MovieScreen';
@@ -42,7 +42,7 @@ export default () => {
 
   return fontLoaded ? (
     <themeContext.Provider value={mode === true ? theme.dark : theme.light}>
-    <NavigationContainer theme={mode === true ? DarkTheme : DefaultTheme}>
+    <NavigationContainer>
       <Stack.Navigator>   
       <Stack.Screen
           name="login"
