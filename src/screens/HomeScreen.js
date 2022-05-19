@@ -99,22 +99,26 @@ const HomeScreen = () => {
             />
 
             <View>
+                <View>
+                    <Text style={styles.titulo}>
+                        EM CARTAZ
+                    </Text>
+                    <ImageBackground
+                style={styles.logo}
+                source={require('../images/logo_white.png')}
+            />
+                </View>
             </View> 
+
+
                        
 
 
 
   
 
-            
-       
-            
             <View style={styles.headerContainer}> 
             </View>
-
-
-
-
             <View style={styles.genrelistContainer}> 
                 <FlatList 
                     data= {genres} 
@@ -202,6 +206,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: Colors.ACTIVE,   /* definindo a cor de fundo. COLORS.EXTRA_LIGHT_GRAY ou WHITE ou COLORS.DARK_GRAY.           backgroundColor: COLORS.EXTRA_LIGHT_GRAY, */
+
     },
     headerContainer: {
         flexDirection: "row",
@@ -209,6 +214,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         paddingHorizontal: 20,
         paddingVertical: -70,
+
     },
 
     headerTitle: {
@@ -216,12 +222,17 @@ const styles = StyleSheet.create({
         fontFamily: "Ultra",
         color: COLORS.BLACK,
 
-
-
+    },
+    titulo:{
+        fontSize: 23,
+        fontFamily: "Ultra",
+        color: COLORS.BLACK,
+        top: -70,
+        left: 30,
 
     },
     headerSubTitle: {
-        width:100,
+        width: 100,
         height: 100,
 
     },
@@ -290,6 +301,16 @@ const styles = StyleSheet.create({
         right: 0,
         bottom: 0,
         left: 0,
+    },
+    logo:{
+        width: 80,
+        height: 80,
+        right: 0,
+        bottom: 0,
+        top: -100,
+        right: 15,
+        position: "absolute",
+
     }
 
 
