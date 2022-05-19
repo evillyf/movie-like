@@ -75,7 +75,11 @@ const HomeScreen = () => {
 
             <SafeAreaView style={styles.safearea}>
             <View style={styles.switch}>
-                <Switch value={mode} onValueChange={(value) => {
+                <Switch  
+                trackColor={{ false: "#E5E5E5", true: "#2A2A2A" }}
+                thumbColor={mode ? "#FFD580" : "#FFD580"} 
+                value={mode} 
+                onValueChange={(value) => {
                     setMode(value);
                     EventRegister.emit("changeTheme", value);
                     
@@ -86,7 +90,7 @@ const HomeScreen = () => {
             <TouchableOpacity style={styles.loginBtn}>
                 
                     <Text 
-                    style={styles.loginText}
+                    style={styles.logoutText}
                     onPress={handleSignOut}>
                     Logout</Text>                  
             </TouchableOpacity>  
@@ -274,7 +278,7 @@ const styles = StyleSheet.create({
       height: 23,
       top: -30,     
     },
-    loginText:{
+    logoutText:{
         color: COLORS.BLACK,
         fontWeight: "bold",
     },
@@ -284,7 +288,13 @@ const styles = StyleSheet.create({
         left: 128,
         width: 75,
         height: 23,
-        top: -30,        
+        top: -30,
+
+    },
+    switchbtn:{
+        backgroundColor: "red",
+        color: "red",
+
     },
     safearea:{
         width: 700,
