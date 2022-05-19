@@ -5,7 +5,8 @@ import Fonts from '../constants/Fonts';
 import Colors from '../constants/Colors';
 import {auth } from '../../firebase';
 import { useNavigation } from '@react-navigation/core';
-
+import { StatusBar} from "expo-status-bar";
+import COLORS from '../constants/Colors';
 
 
 const LoginScreen = () => {
@@ -50,10 +51,12 @@ const LoginScreen = () => {
 
 
   return (
-
+    
     <ImageBackground
     source={require('../images/back-movie.jpg')} resizeMode="cover" style={styles.image}
     >   
+    <StatusBar style="auto" translucent={false} backgroundColor={COLORS.ACTIVE}/> 
+
     <KeyboardAvoidingView
     behavior={Platform.OS === "ios" ? "padding" : "height"}
     enabled={false}

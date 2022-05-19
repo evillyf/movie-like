@@ -224,7 +224,7 @@ const styles = StyleSheet.create({
 
     },
     titulo:{
-        fontSize: 23,
+        fontSize: 27,
         fontFamily: "Ultra",
         color: COLORS.BLACK,
         top: -70,
