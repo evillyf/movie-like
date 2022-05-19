@@ -102,7 +102,7 @@ const HomeScreen = () => {
                 source={require('../images/pipoca_vetor.png')}
             />
 
-            <View>
+            <View style={styles.cardview}>
                 <View>
                     <Text style={{...styles.titulo, color: theme.color}}>
                         EM CARTAZ
@@ -143,6 +143,7 @@ const HomeScreen = () => {
             </View>
             <View>
                 <FlatList
+                    style={styles.list}
                     data={nowPlayingMovies.results}
                     horizontal
                     showsHorizontalScrollIndicator={false}
@@ -219,6 +220,8 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
         paddingVertical: -70,
 
+
+
     },
 
     headerTitle: {
@@ -228,9 +231,9 @@ const styles = StyleSheet.create({
 
     },
     titulo:{
-        fontSize: 27,
+        fontSize: 26,
         fontFamily: "Ultra",
-        top: -70,
+        top: -90,
         left: 30,
 
     },
@@ -240,7 +243,9 @@ const styles = StyleSheet.create({
 
     },
     genrelistContainer: {
-        paddingVertical: 10,
+        top: -45,
+
+
         
     },
     image: {
@@ -291,11 +296,6 @@ const styles = StyleSheet.create({
         top: -30,
 
     },
-    switchbtn:{
-        backgroundColor: "red",
-        color: "red",
-
-    },
     safearea:{
         width: 700,
         top:60,
@@ -316,10 +316,13 @@ const styles = StyleSheet.create({
         height: 80,
         right: 0,
         bottom: 0,
-        top: -100,
+        top: -120,
         right: 15,
         position: "absolute",
 
+    },
+    list: {
+        top: -30,
     }
 
 
