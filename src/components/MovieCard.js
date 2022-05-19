@@ -1,16 +1,22 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity, ImageBackground, TouchableNativeFeedback } from "react-native";
 import COLORS from "../constants/Colors";
 import Fonts from "../constants/Fonts"
 import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import {getPoster, getLanguage} from "../services/MovieService";
+import themeContext from "../config/themeContext";
+
+
 
 /* https://icons.expo.fyi/AntDesign/heart  - para pegar o import e render de ícones */
 const MovieCard = ({title, poster, language, voteAvarage, voteCount, size, heartLess}) => {
     const [liked, setLiked] = useState(false);
     const[voteCountValue, setVoteCountValue] = useState(voteCount);
 
+
+    const theme = useContext(themeContext);
+    const [mode, setMode] = useState(false);
 
     return (
         <TouchableOpacity activeOpacity={0.8}>
@@ -43,7 +49,7 @@ const MovieCard = ({title, poster, language, voteAvarage, voteCount, size, heart
             <View>
                 <Text style={{...styles.movieTitle, width: 230 * size}} numberOfLines={3}>{title}</Text>
                 <View style={styles.movieSubTitleContainer}>
-                    <Text style={styles.movieSubTitle}>{getLanguage(language).english_name}</Text>
+                    <Text style={{...styles.movieSubTitle,  color: theme.color}}>{getLanguage(language).english_name}</Text>
                     <View style={styles.rowAndCenter}>
                         <Ionicons 
                         name="heart" 
@@ -52,7 +58,7 @@ const MovieCard = ({title, poster, language, voteAvarage, voteCount, size, heart
                         style={{ marginRight: 5}}
                         
                         />
-                        <Text style={styles.movieSubTitle}>{voteCountValue}</Text>
+                        <Text style={{...styles.movieSubTitle, color: theme.color}}>{voteCountValue}</Text>
                     </View>
                 </View>
             </View>
@@ -90,7 +96,7 @@ const styles = StyleSheet.create({
     movieSubTitle:{
         fontSize: 12,
         fontFamily: Fonts.REGULAR,
-        color: COLORS.BLACK,
+        color: "black",
     },
 
 

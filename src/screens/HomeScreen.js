@@ -100,7 +100,7 @@ const HomeScreen = () => {
 
             <View>
                 <View>
-                    <Text style={styles.titulo}>
+                    <Text style={{...styles.titulo, color: theme.color}}>
                         EM CARTAZ
                     </Text>
                     <ImageBackground
@@ -160,7 +160,7 @@ const HomeScreen = () => {
             </View>               
             <View style={styles.headerContainer}>
                 <Text style={{...styles.headerTitle, paddingHorizontal: 13, color: theme.color}}>Em breve</Text>
-                <Text style={{...styles.headerSubTitle, paddingVertical: 41, paddingHorizontal:13}}>VER TODOS</Text>              
+                <Text style={{...styles.headerSubTitle, paddingVertical: 41, paddingHorizontal:13, color: theme.color}}>VER TODOS</Text>              
             </View> 
             <View>
             <FlatList
@@ -226,7 +226,6 @@ const styles = StyleSheet.create({
     titulo:{
         fontSize: 27,
         fontFamily: "Ultra",
-        color: COLORS.BLACK,
         top: -70,
         left: 30,
 
