@@ -42,7 +42,7 @@ export default () => {
 
   return fontLoaded ? (
     <themeContext.Provider value={mode === true ? theme.dark : theme.light}>
-    <NavigationContainer>
+    <NavigationContainer  theme={mode === true ? DarkTheme : DefaultTheme}>
       <Stack.Navigator>   
       <Stack.Screen
           name="login"
