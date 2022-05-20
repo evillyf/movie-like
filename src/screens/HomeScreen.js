@@ -109,7 +109,7 @@ const HomeScreen = () => {
                     </Text>
                     <ImageBackground
                 style={styles.logo}
-                source={require('../images/logo_white.png')}
+                source={require('../images/logo_gray.png')}
             />
                 </View>
             </View> 
@@ -316,7 +316,7 @@ const styles = StyleSheet.create({
         height: 80,
         right: 0,
         bottom: 0,
-        top: -1,
+        top: -120,
         right: 15,
         position: "absolute",
 
