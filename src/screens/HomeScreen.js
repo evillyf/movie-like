@@ -159,7 +159,10 @@ const HomeScreen = () => {
                             voteCount={item.vote_count}
                             poster={item.poster_path}
                             heartLess={false}
+<<<<<<< HEAD
                             onPress ={() =>navigation.navigate("movie", {movieId: item.id})}
+=======
+>>>>>>> 9a21a93faf3bfc92831e977033ef7027b2cdb7b3
                         />
                     )}
                 />
@@ -185,7 +188,10 @@ const HomeScreen = () => {
                             voteCount={item.vote_count}
                             poster={item.poster_path}
                             size={0.7}
+<<<<<<< HEAD
                             onPress ={() =>navigation.navigate("movie", {movieId: item.id})}
+=======
+>>>>>>> 9a21a93faf3bfc92831e977033ef7027b2cdb7b3
                         />
                     )}
                 />

@@ -1,4 +1,5 @@
 import { StatusBar} from "expo-status-bar";
+<<<<<<< HEAD
 import React, {useContext, useEffect, useState} from "react";
 import { Dimensions, Image, StyleSheet, Text, View, Linking} from "react-native";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
@@ -53,6 +54,22 @@ const MovieScreen = ({route, navigation}) => {
                 <ItemSeparator height={setHeight(37)}/>
                 <Text>{movie.title}</Text>    
             </ScrollView>
+=======
+import React, {useContext} from "react";
+import { StyleSheet, Text, View } from "react-native";
+import themeContext from "../config/themeContext";
+
+
+const MovieScreen = () => {
+
+    const theme = useContext(themeContext);
+
+    return (
+        <View style={{...styles.container, backgroundColor: theme.backgroundColor}}>
+            <StatusBar style="auto" />
+            <Text style={{...styles.text, color: theme.color}}>Movie Screen</Text>
+        </View>
+>>>>>>> 9a21a93faf3bfc92831e977033ef7027b2cdb7b3
     );
 };
 
@@ -60,6 +77,7 @@ const MovieScreen = ({route, navigation}) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+<<<<<<< HEAD
         backgroundColor: Colors.BASIC_BACKGROUND
     },
     moviePosterImageContainer:{
@@ -109,6 +127,9 @@ const styles = StyleSheet.create({
         elevation: 10,
         
     }
+=======
+    },
+>>>>>>> 9a21a93faf3bfc92831e977033ef7027b2cdb7b3
 });
 
 export default MovieScreen;

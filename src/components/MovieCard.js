@@ -10,7 +10,11 @@ import themeContext from "../config/themeContext";
 
 
 /* https://icons.expo.fyi/AntDesign/heart  - para pegar o import e render de ícones */
+<<<<<<< HEAD
 const MovieCard = ({title, poster, language, voteAvarage, voteCount, size, heartLess, onPress}) => {
+=======
+const MovieCard = ({title, poster, language, voteAvarage, voteCount, size, heartLess}) => {
+>>>>>>> 9a21a93faf3bfc92831e977033ef7027b2cdb7b3
     const [liked, setLiked] = useState(false);
     const[voteCountValue, setVoteCountValue] = useState(voteCount);
 
@@ -19,7 +23,11 @@ const MovieCard = ({title, poster, language, voteAvarage, voteCount, size, heart
     const [mode, setMode] = useState(false);
 
     return (
+<<<<<<< HEAD
         <TouchableOpacity activeOpacity={0.8} onPress={onPress}>
+=======
+        <TouchableOpacity activeOpacity={0.8}>
+>>>>>>> 9a21a93faf3bfc92831e977033ef7027b2cdb7b3
             <ImageBackground 
                 style={{...styles.container, width: 230 * size, height: 340 * size} }
                 imageStyle={{ borderRadius: 12 }}
