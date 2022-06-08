@@ -1,13 +1,13 @@
 import { StatusBar} from "expo-status-bar";
-<<<<<<< HEAD
 import React, {useContext, useEffect, useState} from "react";
 import { Dimensions, Image, StyleSheet, Text, View, Linking} from "react-native";
-import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
+import { ScrollView, TouchableOpacity, FlatList} from "react-native-gesture-handler";
 import themeContext from "../config/themeContext";
 import Fonts from "../constants/Fonts";
 import Colors from "../constants/Colors";
-import {getMovieById, getPoster, getVideo} from "../services/MovieService"
+import {getMovieById, getPoster, getVideo, getLanguage} from "../services/MovieService"
 import ItemSeparator from "../components/ItemSeparator";
+import CastCard from "../components/CastCard";
 import { LinearGradient } from "expo-linear-gradient";
 import { Feather, Ionicons } from '@expo/vector-icons';
 import { APPEND_TO_RESPONSE as AR } from "../constants/Urls";
@@ -24,7 +24,7 @@ const MovieScreen = ({route, navigation}) => {
     const [movie,setMovie] = useState({});
     
     useEffect(() => {
-        getMovieById(movieId,`${AR.VIDEOS}`).then(response => setMovie(response.data));
+        getMovieById(movieId,`${AR.VIDEOS},${AR.CREDITS}`).then(response => setMovie(response?.data));
     }, []);
     return (
             <ScrollView>
@@ -36,7 +36,7 @@ const MovieScreen = ({route, navigation}) => {
 
                 />
                 <View style={styles.moviePosterImageContainer}>
-                    <Image style={styles.moviePosterImage} resizeMode="cover"source={{uri: getPoster(movie.backdrop_path)}}/>
+                    <Image style={styles.moviePosterImage} resizeMode="cover"source={{uri: getPoster(movie?.backdrop_path)}}/>
                 </View>
 
                 <View style={styles.headerContainer}>
@@ -52,24 +52,46 @@ const MovieScreen = ({route, navigation}) => {
                 </View>
                 
                 <ItemSeparator height={setHeight(37)}/>
-                <Text>{movie.title}</Text>    
+
+
+                <View style={styles.movieTitleContainer}>
+                    <Text style={styles.movieTitle}>{movie?.original_title}</Text>
+                    <View style={styles.row}>
+                        <Ionicons name="heart" size={22} color={Colors.HEART}/>
+                        <Text style={styles.ratingText}>{movie?.vote_average}</Text>    
+                    </View>    
+                </View>
+                <Text style={styles.genreText}>{movie?.genres?.map((genre) => genre?.name)?.join(", ")} | {movie?.runtime} Min</Text>
+                <Text style={styles.genreText}>{getLanguage(movie?.original_language)?.english_name}</Text> 
+
+                <View style={styles.OverviewContainer}>
+                    <Text style={styles.OverviewTitle}>Sinopse</Text>
+                    <Text style={styles.OverviewText}>{movie?.overview}</Text>
+                </View>
+                <View>
+                    <Text>Elenco</Text>
+                    <FlatList
+                        data={movie?.credits?.cast}
+                        keyExtractor={(item) => item?.credit_id}
+                        horizontal
+                        showHorizontalScrollIndicator={false}
+                        ItemSeparatorContent={() =><ItemSeparator width={20}/>}
+                        ListHeaderComponent={() =><ItemSeparator width={20}/>}
+                        ListFooterContent={() =><ItemSeparator width={20}/>}
+                        renderItem={({item}) => 
+                        <CastCard
+                            originalName={item?.name}
+                            characterName={item?.character}
+                            image={item?.profile_path}
+                            
+                        />}
+
+                    />
+
+                    
+                </View>
+
             </ScrollView>
-=======
-import React, {useContext} from "react";
-import { StyleSheet, Text, View } from "react-native";
-import themeContext from "../config/themeContext";
-
-
-const MovieScreen = () => {
-
-    const theme = useContext(themeContext);
-
-    return (
-        <View style={{...styles.container, backgroundColor: theme.backgroundColor}}>
-            <StatusBar style="auto" />
-            <Text style={{...styles.text, color: theme.color}}>Movie Screen</Text>
-        </View>
->>>>>>> 9a21a93faf3bfc92831e977033ef7027b2cdb7b3
     );
 };
 
@@ -77,7 +99,6 @@ const MovieScreen = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-<<<<<<< HEAD
         backgroundColor: Colors.BASIC_BACKGROUND
     },
     moviePosterImageContainer:{
@@ -126,10 +147,55 @@ const styles = StyleSheet.create({
         left: setWidth(50) -70/2,
         elevation: 10,
         
-    }
-=======
     },
->>>>>>> 9a21a93faf3bfc92831e977033ef7027b2cdb7b3
+    movieTitleContainer:{
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+        paddingHorizontal:20,
+    },
+    movieTitle:{
+        color: Colors.BLACK,
+        fontFamily: Fonts.EXTRA_BOLD,
+        fontSize: 18,
+        width: setWidth(60),
+
+    },
+    ratingText:{
+        marginLeft:5,
+        color: Colors.BLACK,
+        fontFamily: Fonts.EXTRA_BOLD,
+        fontSize: 15,
+    },
+    row:{
+        flexDirection: "row",
+        alignItems: "center"
+    },
+    genreText:{
+        color: Colors.LIGHT_GRAY,
+        paddingHorizontal: 20,
+        paddingTop: 5,
+        fontFamily: Fonts.BOLD,
+        fontSize: 13,
+    },
+    OverviewContainer:{
+        backgroundColor: Colors.EXTRA_LIGHT_GRAY,
+        paddingHorizontal: 20,
+        paddingVertical: 10,
+        marginVertical: 10,
+    },
+    OverviewTitle:{
+        color: Colors.BLACK,
+        fontFamily: Fonts.BOLD,
+        fontSize: 18,
+    },
+    OverviewText:{
+        color: Colors.LIGHT_GRAY,
+        paddingVertical: 5,
+        fontFamily: Fonts.BOLD,
+        fontSize: 13,
+        textAlign: "justify"
+    },
 });
 
 export default MovieScreen;
