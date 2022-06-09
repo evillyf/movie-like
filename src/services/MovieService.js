@@ -24,7 +24,7 @@ const getUpcomingMovies = () =>
     TMDB_HTTP_REQUEST.get(ENDPOINTS.UPCOMING_MOVIES);
 
 const getMovieById = (movieId, append_to_response="") =>
-    TMDB_HTTP_REQUEST.get(`${ENDPOINTS.MOVIE}/${movieId}`, append_to_response ? {params: {append_to_response}} : null);    
+    TMDB_HTTP_REQUEST.get(`${ENDPOINTS.MOVIE}/${movieId}`, append_to_response ? {params: {append_to_response}} : null);  
 
 const getAllGenres = () =>
     TMDB_HTTP_REQUEST.get(ENDPOINTS.GENRES);
@@ -35,5 +35,7 @@ const getVideo = (key) => `${YOUTUBE_BASE_URL}?v=${key}`;
 
 
 const getLanguage = (language_iso) => LANGUAGES.find((language) => language.iso_639_1 === language_iso); 
+
+
 
 export { getNowPlayingMovies, getUpcomingMovies, getMovieById, getAllGenres, getPoster, getLanguage, getVideo };

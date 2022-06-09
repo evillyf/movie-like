@@ -12,6 +12,9 @@ import MovieCard from "../components/MovieCard";
 import { LinearGradient } from "expo-linear-gradient";
 import { Feather, Ionicons } from '@expo/vector-icons';
 import { APPEND_TO_RESPONSE as AR } from "../constants/Urls";
+import COLORS from "../constants/Colors";
+
+
 
 const { height, width } = Dimensions.get('screen')
 const setHeight = (h) => (height / 100) * h
@@ -65,7 +68,7 @@ const MovieScreen = ({ route, navigation }) => {
                 <Text style={styles.movieTitle}>{movie?.original_title}</Text>
                 <View style={styles.row}>
                     <Ionicons name="heart" size={22} color={Colors.HEART} />
-                    <Text style={styles.ratingText}>{movie?.vote_average}</Text>
+                    <Text style={{...styles.ratingText,color: theme.color}}>{movie?.vote_average}</Text>
                 </View>
             </View>
 
@@ -78,15 +81,11 @@ const MovieScreen = ({ route, navigation }) => {
             </View>
 
             <View>
-                <Text style={styles.castTitle}>Elenco</Text>
+                <Text style={{...styles.castTitle,color: theme.color}}>Elenco</Text>
 
-                <View style={styles.castSubMenuContainer}>
-                    <TouchableOpacity activeOpacity={0.5} onPress={() => setIsCastSelected(true)}>
-                        <Text style={{...styles.castSubMenuText, color: isCastSelected ? Colors.BLACK : Colors.LIGHT_GRAY}}>Elenco</Text>
-                    </TouchableOpacity>
-
+                <View style={{...styles.castSubMenuContainer, color: theme.color}}>
                     <TouchableOpacity activeOpacity={0.5} onPress={() => setIsCastSelected(false)}>
-                        <Text style={{...styles.castSubMenuText, color: isCastSelected ? Colors.LIGHT_GRAY : Colors.BLACK}}>Equipe de filmagem</Text>
+                        <Text style={{...styles.castSubMenuText, color: isCastSelected ? Colors.WHITE : Colors.BLACK, color: theme.color}}>Equipe de filmagem</Text>
                     </TouchableOpacity>
 
                 </View>
@@ -111,33 +110,10 @@ const MovieScreen = ({ route, navigation }) => {
 
 
             </View>
-            <Text style={styles.extraListTitle}>Filmes Recomendados</Text>
+            <Text style={{...styles.extraListTitle, color: theme.color, paddingVertical: 15}}>Recomendações</Text>
             <View>
             <FlatList 
                 data={movie?.recommendations?.results}
-                keyExtractor={(item) => item?.id?.toString()}
-                horizontal
-                showHorizontalScrollIndicator={false}
-                ItemSeparatorComponent={() => <ItemSeparator width={20} />}
-                ListHeaderComponent={() => <ItemSeparator width={20} />}
-                ListFooterComponent={() => <ItemSeparator width={20} />}
-                renderItem={({ item }) =>
-                    <MovieCard 
-                    title={item.title} 
-                    language={item.original_language} 
-                    voteAvarage={item.vote_avarage}
-                    voteCount={item.vote_count}
-                    poster={item.poster_path}
-                    size={0.7}
-                    onPress ={() =>navigation.navigate("movie", {movieId: item.id})}
-                    />}
-            />
-            </View>
-
-            <Text style={styles.extraListTitle}>Filmes Parecidos</Text>
-            <View>
-            <FlatList 
-                data={movie?.similar?.results}
                 keyExtractor={(item) => item?.id?.toString()}
                 horizontal
                 showHorizontalScrollIndicator={false}
@@ -250,9 +226,9 @@ const styles = StyleSheet.create({
         marginVertical: 10,
     },
     OverviewTitle: {
-        color: Colors.BLACK,
-        fontFamily: Fonts.BOLD,
         fontSize: 18,
+        fontFamily: "Ultra",
+        color: COLORS.BLACK,
     },
     OverviewText: {
         color: Colors.LIGHT_GRAY,
@@ -263,8 +239,8 @@ const styles = StyleSheet.create({
     },
     castTitle: {
         marginLeft: 20,
-        color: Colors.BLACK,
-        fontFamily: Fonts.BOLD,
+        fontFamily: "Ultra",
+        color: COLORS.BLACK,
         fontSize: 18,
     },
     castSubMenuContainer: {
@@ -280,8 +256,8 @@ const styles = StyleSheet.create({
     },
     extraListTitle:{
         marginLeft:20,
-        color: Colors.BLACK,
-        fontFamily: Fonts.BOLD,
+        fontFamily: "Ultra",
+        color: COLORS.BLACK,
         fontSize:18,
         marginVertical: 8,
     },
