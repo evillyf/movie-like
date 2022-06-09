@@ -3,11 +3,12 @@ import { View, StyleSheet, Text,Image } from 'react-native'
 import { getPoster } from '../services/MovieService';
 import Colors from '../constants/Colors';
 import Fonts from '../constants/Fonts';
+import Images from '../constants/Images';
 
 const CastCard = ({originalName, image, characterName}) => {
     return ( 
     <View style={styles.container}>
-        <Image source={{uri: getPoster(image)}} resizeMode="cover" style={styles.image}/>
+        <Image source={ {uri: getPoster(image)}} resizeMode="cover" style={styles.image}/>
         
         <Text style={styles.originalName} numberOfLines={2}>{originalName}</Text>
         <Text style={styles.characterName} numberOfLines={2}>{characterName}</Text>
@@ -17,7 +18,6 @@ const CastCard = ({originalName, image, characterName}) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginRight: 20,
     
     },
     image:{
