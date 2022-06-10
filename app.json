@@ -14,11 +14,14 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/splash1.png",
       "resizeMode": "contain",
+      "backgroundColor": "#D4AF37",
+    "adaptiveIcon": { 
+      "foregroundImage": "./assets/adaptive_icon.png",
       "backgroundColor": "#D4AF37"
-    
-    },
+      },
+      "android.adaptiveIcon.backgroundColor": "#D4AF37",
     "android": {
       "package": "HOST.EXP.EXPONENT"
     }
@@ -27,4 +30,4 @@
     "package": "com.movielike.movielike",
     "versionCode": 1
   }
-}
+}}

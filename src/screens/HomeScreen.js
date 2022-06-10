@@ -166,7 +166,7 @@ const HomeScreen = () => {
             </View>               
             <View style={styles.headerContainer}>
                 <Text style={{...styles.headerTitle, paddingHorizontal: 13, color: theme.color}}>Em breve</Text>
-                <Text style={{...styles.headerSubTitle, paddingVertical: 41, paddingHorizontal:13, color: theme.color}}>VER TODOS</Text>              
+                <Text style={{...styles.headerSubTitle, paddingVertical: 41, paddingHorizontal:13, color: theme.color}}> </Text>              
             </View> 
             <View>
             <FlatList
